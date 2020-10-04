@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+    <h1>Search Results</h1>
+
+<head>
+    <style>
+
+
+        #details {
+
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  width: 100%;
+}
+    </style>
+</head>
+
+
+
+<body>
+    <ul>
+        <table id="details">
+         <thead>
+          <tr>
+            <th>NMI</th>
+            <th>Serial Number</th>
+            <th>Reading Value</th>
+            <th>Reading time</th>
+          </tr>
+        </thead>
+      {% for data in object_list %}
+        <tr>
+            <td>{{ data.nmi }}</td>
+            <td>{{ data.serial_number }}</td>
+            <td>{{ data.reading_value }}</td>
+            <td>{{ data.reading_time }}</td>
+
+        </tr>
+      {% endfor %}
+       </table>
+    </ul>
+
+
+
+</body>
+</html>

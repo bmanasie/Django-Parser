@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Enter the NMI or Meter Reading Value</h1>
+    <form id="search" action="{% url 'search_results' %}" method="get">
+    <input name="q" type="text" placeholder="Search...">
+        <input type="submit" value="Submit">
+</form>
+
+
+
+</body>
+
+<script>
+
+
+    $("#search").submit(function(e) {
+    e.preventDefault();
+
+    }
+</script>
+
+</html>

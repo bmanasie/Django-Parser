@@ -29,6 +29,8 @@
             <th>Serial Number</th>
             <th>Reading Value</th>
             <th>Reading time</th>
+              <th>File name</th>
+
           </tr>
         </thead>
       {% for data in object_list %}
@@ -37,6 +39,7 @@
             <td>{{ data.serial_number }}</td>
             <td>{{ data.reading_value }}</td>
             <td>{{ data.reading_time }}</td>
+            <td>{{ data.filename }}</td>
 
         </tr>
       {% endfor %}

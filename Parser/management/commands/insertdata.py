@@ -15,7 +15,6 @@ class Command(BaseCommand):
                               type=str ,
                               help="Inserts data from CSV file" )
 
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.model_name = NEM13
@@ -26,12 +25,11 @@ class Command(BaseCommand):
                 nmi=data [ "nmi" ] ,
                 reading_time=data [ "reading_time" ] ,
                 serial_number=data [ "serial_number" ],
-                reading_value = data ["reading_value"]
-
+                reading_value = data ["reading_value"],
+                filename = data [ "filename" ]
             )
         except Exception as e :
-            raise CommandError ( "Error in inserting {}: {}".format (
-                self.model_name , str ( e ) ) )
+            raise CommandError ( "Error in inserting " )
 
     def get_current_app_path(self):
         return apps.get_app_config('Parser').path
@@ -43,15 +41,6 @@ class Command(BaseCommand):
         return file_path
 
     def handle(self, *args, **options):
-
-
-# //    nmi = models.CharField(max_length=10)
-#     reading_time = models.DateTimeField('date published')
-#     serial_number = models.CharField(max_length=12)
-#     reading_value = models.CharField(max_length=15)
-#     filename = models.FileField(upload_to='uploads/')
-
-
 
         for filename in options['filenames']:
             self.stdout.write(self.style.SUCCESS('Reading:{}'.format(filename)))
@@ -79,7 +68,9 @@ class Command(BaseCommand):
                             data["nmi"] = nmi
                             data["reading_time"] = reading_time
                             data["serial_number"] = serial_number
-                            data["reading_value"] = reading_value
+                            data [ "reading_value" ] = reading_value
+                            data [ "filename" ] = filename
+                            print(filename)
                             self.insert_data_to_db(data)
                             self.stdout.write(
                                 self.style.SUCCESS('{}_{}'.format(

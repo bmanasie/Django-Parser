@@ -8,4 +8,4 @@ class NEM13(models.Model):
     reading_time = models.DateTimeField('date published')
     serial_number = models.CharField(max_length=12)
     reading_value = models.CharField(max_length=15)
-    filename = models.FileField(upload_to='uploads/')
+    filename = models.CharField(max_length=255)
